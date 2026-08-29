@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rovell Finance - Specialist Property Finance Broker</title>
+<meta name="description" content="Bridging, development, commercial and buy-to-let finance. Arranged by a broker with six years' lender-side experience. Chorley, Lancashire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F7F3EE;
+    --parchment-deep:#EFE9E0;
+    --ink:#16202B;
+    --ink-soft:#2C3947;
+    --terracotta:#C2623A;
+    --terracotta-deep:#9E4B29;
+    --stone:#6E6A61;
+    --rule:#E0D9CC;
+    --rule-dark:#2B3846;
+
+    --display:'Fraunces',Georgia,serif;
+    --body:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+    --measure:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none!important;transition:none!important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:var(--body);
+    font-weight:300;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .shell{max-width:var(--measure);margin:0 auto;padding:0 32px;}
+
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--terracotta);outline-offset:3px;}
+
+  /* ---------- shared type ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11.5px;
+    font-weight:500;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    margin:0 0 22px;
+  }
+  .eyebrow.on-dark{color:#D98A63;}
+
+  h2.section-title{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(28px,3.4vw,42px);
+    line-height:1.14;
+    letter-spacing:-.015em;
+    margin:0 0 18px;
+    max-width:19ch;
+  }
+
+  .lede{
+    font-size:18.5px;
+    line-height:1.62;
+    color:var(--stone);
+    max-width:56ch;
+    margin:0;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,243,238,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule);
+  }
+  .masthead .shell{
+    display:flex;align-items:center;justify-content:space-between;
+    height:74px;
+  }
+  .wordmark{
+    font-family:var(--display);
+    font-size:22px;font-weight:600;letter-spacing:-.02em;
+    text-decoration:none;
+  }
+  .wordmark span{color:var(--terracotta);}
+  .masthead nav{display:flex;align-items:center;gap:34px;}
+  .masthead nav a{
+    font-size:14.5px;text-decoration:none;color:var(--ink);
+    padding-bottom:2px;border-bottom:1px solid transparent;
+    transition:border-color .18s ease;
+  }
+  .masthead nav a:hover{border-bottom-color:var(--terracotta);}
+  .masthead .nav-link-set{display:flex;gap:34px;}
+  .call-link{
+    font-family:var(--mono);font-size:13.5px;font-weight:500;
+    color:var(--terracotta)!important;white-space:nowrap;
+  }
+  @media (max-width:820px){
+    .masthead .nav-link-set{display:none;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:96px 0 88px;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 330px;
+    gap:64px;
+    align-items:start;
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-weight:300;
+    font-size:clamp(36px,4.9vw,64px);
+    line-height:1.07;
+    letter-spacing:-.028em;
+    margin:0 0 28px;
+    max-width:16ch;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--terracotta);
+  }
+  .hero-lede{
+    font-size:18.5px;line-height:1.6;color:var(--stone);
+    max-width:50ch;margin:0;
+  }
+  .hero-lede strong{color:var(--ink);font-weight:400;}
+
+  /* portrait — works whether the background is cut out or left in */
+  .portrait-frame{position:relative;margin-top:52px;}
+  .portrait-plate{
+    position:relative;
+    background:var(--parchment-deep);
+    border:1px solid var(--rule);
+    aspect-ratio:4/5;
+    overflow:hidden;
+  }
+  .portrait-plate img{
+    display:block;width:100%;height:100%;
+    object-fit:cover;object-position:center 22%;
+  }
+  /* shown only until a real photo file is in place */
+  .portrait-plate.is-empty::before{
+    content:'Photo';
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:#B3AB9C;
+  }
+  .portrait-plate.is-empty{
+    background:
+      repeating-linear-gradient(45deg,
+        var(--parchment-deep) 0 10px,
+        #EAE3D8 10px 20px);
+  }
+  /* thin terracotta corner tick, ties the block to the rest of the page */
+  .portrait-frame::after{
+    content:'';position:absolute;left:-1px;bottom:-1px;
+    width:38px;height:3px;background:var(--terracotta);
+  }
+  .portrait-caption{
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--stone);
+    padding-top:13px;
+  }
+  .portrait-caption strong{color:var(--ink);font-weight:500;}
+
+  @media (max-width:1020px){
+    .hero-grid{grid-template-columns:minmax(0,1fr) 270px;gap:44px;}
+    .portrait-frame{margin-top:40px;}
+  }
+  @media (max-width:760px){
+    .hero{padding:60px 0 52px;}
+    .hero-grid{grid-template-columns:1fr;gap:36px;}
+    .portrait-frame{margin-top:0;max-width:300px;}
+  }
+
+  /* ---------- rule band ---------- */
+  .band-rule{border-top:1px solid var(--rule);}
+
+  /* ---------- lender-side section ---------- */
+  .lender{
+    background:var(--ink);
+    color:var(--parchment);
+    padding:104px 0;
+  }
+  .lender-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+    gap:80px;align-items:start;
+  }
+  .lender h2{
+    font-family:var(--display);font-weight:300;
+    font-size:clamp(29px,3.5vw,45px);line-height:1.11;
+    letter-spacing:-.022em;margin:0;max-width:14ch;
+  }
+  .lender h2 em{font-style:italic;color:#E08A5F;}
+
+  /* pull-out under the heading — fills the column and carries the best line */
+  .lender-pull{
+    margin-top:38px;padding-top:26px;
+    border-top:1px solid rgba(224,138,95,.35);
+    max-width:23ch;
+  }
+  .lender-pull p{
+    font-family:var(--display);font-style:italic;font-weight:300;
+    font-size:21px;line-height:1.42;color:#DCC3B4;
+    margin:0;max-width:none;
+  }
+  .lender-sig{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:#6E7A88;margin-top:20px;
+  }
+
+  .lender-body p{
+    font-size:17px;line-height:1.75;
+    color:#B9C2CC;margin:0 0 22px;max-width:50ch;
+  }
+  .lender-body p:last-child{margin-bottom:0;}
+  .lender-body p strong{color:var(--parchment);font-weight:500;}
+
+  @media (max-width:900px){
+    .lender{padding:64px 0;}
+    .lender-grid{grid-template-columns:1fr;gap:36px;}
+    .lender-pull{margin-top:28px;max-width:34ch;}
+    .lender-pull p{font-size:19px;}
+  }
+
+  /* ---------- products ---------- */
+  .products{padding:96px 0 44px;}
+  .product-list{margin-top:50px;border-top:1px solid var(--rule);}
+  .product{
+    position:relative;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);
+    gap:52px;
+    padding:26px 0 26px 24px;
+    border-bottom:1px solid var(--rule);
+    align-items:baseline;
+  }
+  .product::before{
+    content:'';position:absolute;left:0;top:-1px;bottom:-1px;width:2px;
+    background:var(--terracotta);
+    transform:scaleY(0);transform-origin:top;
+    transition:transform .3s cubic-bezier(.4,0,.2,1);
+  }
+  .product:hover::before{transform:scaleY(1);}
+  @media (prefers-reduced-motion:reduce){
+    .product::before{transition:none;}
+  }
+
+  .product-mark{
+    font-family:var(--mono);font-size:10px;font-weight:500;
+    letter-spacing:.16em;color:var(--terracotta);
+    margin-bottom:7px;
+  }
+  .product h3{
+    font-family:var(--display);font-weight:400;
+    font-size:26px;line-height:1.15;letter-spacing:-.015em;
+    margin:0;
+  }
+
+  .product-detail p{
+    margin:0;color:var(--stone);font-size:16.5px;line-height:1.58;
+    max-width:46ch;
+  }
+  .product-detail .terms{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+    color:var(--ink);opacity:.55;margin-top:11px;
+  }
+
+  @media (max-width:820px){
+    .products{padding:64px 0 32px;}
+    .product{grid-template-columns:1fr;gap:12px;padding:24px 0 24px 18px;}
+    .product h3{font-size:23px;}
+  }
+
+  /* ---------- the record — horizontal case cards ---------- */
+  .ledger-section{padding:88px 0 96px;}
+  .ledger-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:40px;flex-wrap:wrap;margin-bottom:38px;
+  }
+  .ledger-note{
+    font-family:var(--mono);font-size:12px;color:var(--stone);
+    max-width:30ch;line-height:1.6;
+  }
+  .head-right{display:flex;flex-direction:column;align-items:flex-end;gap:16px;}
+  .head-right .ledger-note{text-align:right;}
+
+  .scroll-btns{display:flex;gap:8px;}
+  .scroll-btn{
+    width:38px;height:38px;border:1px solid var(--rule);
+    background:transparent;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink);transition:all .16s ease;padding:0;
+  }
+  .scroll-btn:hover{border-color:var(--ink);background:var(--ink);color:var(--parchment);}
+  .scroll-btn:disabled{opacity:.3;cursor:default;}
+  .scroll-btn:disabled:hover{border-color:var(--rule);background:transparent;color:var(--ink);}
+  .scroll-btn svg{width:15px;height:15px;}
+
+  .case-scroller{
+    display:flex;gap:20px;
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    align-items:flex-start;
+    padding-bottom:14px;
+    scrollbar-width:thin;
+    scrollbar-color:var(--rule) transparent;
+  }
+  .case-scroller::-webkit-scrollbar{height:5px;}
+  .case-scroller::-webkit-scrollbar-track{background:transparent;}
+  .case-scroller::-webkit-scrollbar-thumb{background:var(--rule);}
+  @media (prefers-reduced-motion:reduce){.case-scroller{scroll-behavior:auto;}}
+
+  .case-card{
+    flex:0 0 318px;scroll-snap-align:start;
+    background:#FCFAF7;border:1px solid var(--rule);
+    display:flex;flex-direction:column;
+  }
+
+  .case-photo{
+    position:relative;background:var(--parchment-deep);
+    aspect-ratio:4/3;overflow:hidden;
+    border-bottom:1px solid var(--rule);
+  }
+  .case-photo img{display:block;width:100%;height:100%;object-fit:cover;}
+  .case-photo.is-empty{
+    background:repeating-linear-gradient(45deg,
+      var(--parchment-deep) 0 10px,#EAE3D8 10px 20px);
+  }
+  .case-photo.is-empty::before{
+    content:'Photo';position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:#B3AB9C;
+  }
+
+  .case-card-body{padding:22px 22px 24px;}
+  .case-amount{
+    font-family:var(--display);font-weight:400;
+    font-size:38px;line-height:1;letter-spacing:-.025em;
+    color:var(--ink);font-variant-numeric:tabular-nums;
+    margin-bottom:12px;
+  }
+  .case-product{
+    font-family:var(--mono);font-size:12.5px;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;
+    color:var(--terracotta);margin-bottom:5px;
+  }
+  .case-location{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--stone);
+  }
+  .case-title{
+    font-size:15.5px;line-height:1.45;color:var(--ink);
+    padding-top:14px;margin-top:14px;border-top:1px solid var(--rule);
+  }
+
+  @media (max-width:820px){
+    .ledger-section{padding:56px 0 64px;}
+    .ledger-head{flex-direction:column;align-items:flex-start;gap:20px;}
+    .head-right{align-items:flex-start;}
+    .head-right .ledger-note{text-align:left;}
+    .scroll-btns{display:none;}
+    .case-card{flex:0 0 268px;}
+    .case-amount{font-size:32px;}
+  }
+
+  /* ---------- process ---------- */
+  .process{background:var(--parchment-deep);padding:92px 0;}
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    margin-top:52px;background:var(--rule);
+    border:1px solid var(--rule);
+  }
+  .step{background:var(--parchment-deep);padding:28px 26px 32px;}
+  .step-n{
+    font-family:var(--mono);font-size:11.5px;font-weight:500;
+    color:var(--terracotta);letter-spacing:.1em;margin-bottom:16px;
+  }
+  .step h3{
+    font-family:var(--display);font-weight:400;font-size:19.5px;
+    margin:0 0 10px;line-height:1.25;
+  }
+  .step p{margin:0;font-size:15.5px;line-height:1.58;color:var(--stone);}
+  @media (max-width:900px){
+    .process{padding:64px 0;}
+    .steps{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .steps{grid-template-columns:1fr;}
+  }
+
+  /* ---------- coverage ---------- */
+  .coverage{padding:88px 0;}
+  .coverage-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:start;
+  }
+  .coverage ul{
+    list-style:none;padding:0;margin:0;
+    border-top:1px solid var(--rule);
+  }
+  .coverage li{
+    padding:13px 0;border-bottom:1px solid var(--rule);
+    font-family:var(--mono);font-size:13.5px;color:var(--ink);
+    display:flex;justify-content:space-between;gap:20px;
+  }
+  .coverage li span{color:var(--stone);}
+  @media (max-width:900px){
+    .coverage{padding:56px 0;}
+    .coverage-grid{grid-template-columns:1fr;gap:36px;}
+  }
+
+  /* ---------- contact ---------- */
+  .contact{
+    background:var(--ink);color:var(--parchment);
+    padding:96px 0 88px;
+  }
+  .contact h2{
+    font-family:var(--display);font-weight:300;
+    font-size:clamp(30px,4.4vw,52px);line-height:1.1;
+    letter-spacing:-.025em;margin:0 0 22px;max-width:16ch;
+  }
+  .contact h2 em{font-style:italic;color:#E08A5F;}
+  .contact-lede{
+    font-size:18px;line-height:1.65;color:#B9C2CC;
+    max-width:50ch;margin:0 0 46px;
+  }
+  .contact-lines{
+    display:flex;gap:64px;flex-wrap:wrap;
+    padding-top:34px;border-top:1px solid var(--rule-dark);
+  }
+  .contact-line .label{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:#7C8896;margin-bottom:9px;
+  }
+  .contact-line a,.contact-line .val{
+    font-family:var(--display);font-size:23px;font-weight:400;
+    color:var(--parchment);text-decoration:none;letter-spacing:-.01em;
+    border-bottom:1px solid transparent;transition:border-color .18s ease;
+  }
+  .contact-line a:hover{border-bottom-color:#E08A5F;}
+  @media (max-width:820px){
+    .contact{padding:64px 0 56px;}
+    .contact-lines{gap:32px;flex-direction:column;}
+  }
+
+  /* ---------- footer ---------- */
+  .foot{
+    background:var(--ink);color:#6E7A88;
+    padding:0 0 46px;font-size:12.5px;line-height:1.7;
+  }
+  .foot .shell{
+    border-top:1px solid var(--rule-dark);padding-top:30px;
+    display:grid;grid-template-columns:1.6fr 1fr;gap:48px;
+  }
+  .foot p{margin:0 0 12px;max-width:66ch;}
+  .foot p:last-child{margin-bottom:0;}
+  .foot-brand{
+    font-family:var(--display);font-size:17px;color:#98A3AF;font-weight:400;
+  }
+  @media (max-width:820px){
+    .foot .shell{grid-template-columns:1fr;gap:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="shell">
+    <a href="#top" class="wordmark">Rovell<span>.</span></a>
+    <nav>
+      <div class="nav-link-set">
+        <a href="#what">What I arrange</a>
+        <a href="#recent">Recent work</a>
+        <a href="#process">How it works</a>
+      </div>
+      <a href="tel:+447727845469" class="call-link">07727 845469</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="shell">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow rise">Specialist Property Finance Broker</p>
+          <h1 class="rise">Property finance, arranged by someone who used to sit <em>on the lender's side.</em></h1>
+          <p class="hero-lede rise">
+            Rovell arranges bridging, development, commercial and buy-to-let lending
+            across the UK. Six years working for lenders before launching Rovell
+            so you get <strong>a clear answer early</strong> on whether a deal works.
+          </p>
+        </div>
+
+        <div class="portrait-frame rise">
+          <div class="portrait-plate">
+            <!-- SWAP THIS: replace src with your photo, e.g. src="lewis.jpg" -->
+            <img src="lewis.jpg" alt="Lewis Whittaker, Rovell Finance"
+                 onerror="this.style.display='none';this.parentElement.classList.add('is-empty');">
+          </div>
+          <div class="portrait-caption">
+            <strong>Lewis Whittaker</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LENDER SIDE -->
+  <section class="lender">
+    <div class="shell">
+      <div class="lender-grid">
+        <div>
+          <p class="eyebrow on-dark rise">Why it matters</p>
+          <h2 class="rise">I spent six years deciding which deals <em>got funded.</em></h2>
+        </div>
+
+        <div class="lender-body rise">
+          <p>
+            Before Rovell I worked lender-side in bridging and development finance
+            writing terms, reading valuations, and sitting in the room when cases were
+            approved or turned down.
+          </p>
+          <p>
+            <strong>That is the useful part.</strong> I know what a credit committee
+            will ask before they ask it. Which lender is genuinely comfortable with an
+            awkward title, a tight timescale, or a borrower who does not fit a tickbox
+            and which one will spend three weeks of your time before declining.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="what">
+    <div class="shell">
+      <p class="eyebrow rise">What I arrange</p>
+      <h2 class="section-title rise">Services & Expertise</h2>
+
+      <div class="product-list">
+
+        <article class="product rise">
+          <div>
+            <div class="product-mark">BRG</div>
+            <h3>Bridging finance</h3>
+          </div>
+          <div class="product-detail">
+            <p>Short-term lending where speed decides the deal, auction deadlines, chain breaks, or an asset no term lender will touch yet.</p>
+          </div>
+        </article>
+
+        <article class="product rise">
+          <div>
+            <div class="product-mark">DEV</div>
+            <h3>Development finance</h3>
+          </div>
+          <div class="product-detail">
+            <p>Staged funding for ground-up builds, conversions and heavy refurbishment, drawn against works as they complete.</p>
+          </div>
+        </article>
+
+        <article class="product rise">
+          <div>
+            <div class="product-mark">COM</div>
+            <h3>Commercial mortgages</h3>
+          </div>
+          <div class="product-detail">
+            <p>Longer-term lending on premises you trade from, or commercial and semi-commercial property held as an investment.</p>
+          </div>
+        </article>
+
+        <article class="product rise">
+          <div>
+            <div class="product-mark">BTL</div>
+            <h3>Buy-to-let mortgages</h3>
+          </div>
+          <div class="product-detail">
+            <p>Single properties through to portfolios, and usually the planned exit from a bridge, which is worth arranging before the bridge completes.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       THE RECORD — horizontal card scroller
+       To add a deal: copy the block marked CARD START to CARD END and
+       paste it after the last </article>. Photo: drop the image file next
+       to index.html and put the filename in src="".
+       ==================================================================== -->
+  <section class="ledger-section" id="recent">
+    <div class="shell">
+      <div class="ledger-head">
+        <div>
+          <p class="eyebrow rise">Recent work</p>
+          <h2 class="section-title rise" style="margin-bottom:0;">A record, rather than a promise.</h2>
+        </div>
+        <div class="head-right rise">
+          <div class="scroll-btns">
+            <button class="scroll-btn" id="case-prev" aria-label="Previous cases">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="scroll-btn" id="case-next" aria-label="More cases">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-scroller rise" id="case-scroller" tabindex="0" aria-label="Recent completed cases">
+
+        <!-- ===== CARD START — copy this whole block to add a deal ===== -->
+        <article class="case-card">
+          <div class="case-photo">
+            <img src="" alt=""
+                 onerror="this.style.display='none';this.parentElement.classList.add('is-empty');">
+          </div>
+          <div class="case-card-body">
+            <div class="case-amount">£810,000</div>
+            <div class="case-product">Bridging</div>
+            <div class="case-location">Yorkshire</div>
+            <p class="case-title">Purchase of vacant school</p>
+          </div>
+        </article>
+        <!-- ===== CARD END ===== -->
+        <article class="case-card">
+          <div class="case-photo">
+            <img src="" alt=""
+                 onerror="this.style.display='none';this.parentElement.classList.add('is-empty');">
+          </div>
+          <div class="case-card-body">
+            <div class="case-amount">£720,000</div>
+            <div class="case-product">Bridging</div>
+            <div class="case-location">Yorkshire</div>
+            <p class="case-title">Below market value BTL purchase</p>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="case-photo">
+            <img src="" alt=""
+                 onerror="this.style.display='none';this.parentElement.classList.add('is-empty');">
+          </div>
+          <div class="case-card-body">
+            <div class="case-amount">£120,000</div>
+            <div class="case-product">Bridging</div>
+            <div class="case-location">Yorkshire</div>
+            <p class="case-title">Auction purchase</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="shell">
+      <p class="eyebrow rise">How it works</p>
+      <h2 class="section-title rise">Our Process</h2>
+
+      <div class="steps">
+        <div class="step rise">
+          <div class="step-n">01</div>
+          <h3>A call</h3>
+          <p>Fifteen minutes. What you are buying or building, what it is worth, and how
+            you intend to repay it. Usually enough to know whether this is worth pursuing.</p>
+        </div>
+        <div class="step rise">
+          <div class="step-n">02</div>
+          <h3>Indicative terms</h3>
+          <p>Real numbers from real lenders, rate, fees, term and what they will need.
+            Normally back with you inside 24 to 48 hours.</p>
+        </div>
+        <div class="step rise">
+          <div class="step-n">03</div>
+          <h3>Application &amp; valuation</h3>
+          <p>I package the case properly the first time, so underwriting is not spent
+            chasing documents. You get told what is happening without asking.</p>
+        </div>
+        <div class="step rise">
+          <div class="step-n">04</div>
+          <h3>Legals &amp; drawdown</h3>
+          <p>Solicitors instructed, conditions cleared, funds released. I stay on it
+            through to completion, and afterwards if the exit needs arranging.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="shell">
+      <p class="eyebrow on-dark rise">Get in touch</p>
+      <h2 class="rise">Tell me about your deal.</h2>
+      <p class="contact-lede rise">Tell me about your deal, and I will tell you if it
+        will work. I only take on a limited number of cases at a time, so each one
+        gets a proper level of service.</p>
+
+      <div class="contact-lines rise">
+        <div class="contact-line">
+          <div class="label">Call</div>
+          <a href="tel:+447727845469">07727 845469</a>
+        </div>
+        <div class="contact-line">
+          <div class="label">Email</div>
+          <a href="mailto:lewis@rovell.co.uk">lewis@rovell.co.uk</a>
+        </div>
+        <div class="contact-line">
+          <div class="label">Office</div>
+          <div class="val">Chorley, Lancashire</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div>
+      <p class="foot-brand">Rovell Finance Limited</p>
+      <p>Rovell Finance Limited is an independent commercial finance brokerage, not a
+        lender; as such we can introduce you to a wide range of finance providers
+        depending on your requirements and circumstances. We are not independent
+        financial advisors and so are unable to provide you with independent financial
+        advice. Rovell Finance Limited will receive payment(s) in the form of commission
+        from the finance provider if you decide to enter into an agreement with them.
+        We work with both discretionary and non-discretionary commission models.
+        Commission payments are factored into the interest rate you pay.</p>
+      <p>*Rovell Finance Limited is an Appointed Representative of AFS Compliance
+        Limited, which is authorised and regulated by the Financial Conduct Authority
+        (FRN 625035). Rovell Finance Limited is registered in England and Wales,
+        company number 16482745.</p>
+      <p>Rovell Finance Limited aims to provide our customers with the highest
+        standards of service. If our service fails to meet your requirements and you
+        would like to report a complaint, please follow the link below:
+        <a href="#" style="text-decoration:underline;">Complaints Synergy</a></p>
+      <p>Your property may be repossessed if you do not keep up repayments on a mortgage
+        or any other debt secured on it. Some forms of buy-to-let, commercial and bridging
+        finance are not regulated by the Financial Conduct Authority.</p>
+    </div>
+    <div>
+      <p>Chorley, Lancashire</p>
+      <p>© 2026 Rovell Finance Limited</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var sc = document.getElementById('case-scroller');
+    var prev = document.getElementById('case-prev');
+    var next = document.getElementById('case-next');
+    if(!sc || !prev || !next) return;
+
+    function step(){
+      var card = sc.querySelector('.case-card');
+      if(!card) return 320;
+      return card.getBoundingClientRect().width + 20;
+    }
+    function sync(){
+      prev.disabled = sc.scrollLeft <= 4;
+      next.disabled = sc.scrollLeft >= (sc.scrollWidth - sc.clientWidth - 4);
+    }
+    prev.addEventListener('click', function(){ sc.scrollBy({left:-step(), behavior:'smooth'}); });
+    next.addEventListener('click', function(){ sc.scrollBy({left: step(), behavior:'smooth'}); });
+    sc.addEventListener('scroll', sync, {passive:true});
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+</script>
+</body>
+</html>
