@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found - Rovell Finance</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" href="/logo-mark.png">
+<link rel="apple-touch-icon" href="/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F7F3EE;
+    --parchment-deep:#EFE9E0;
+    --ink:#16202B;
+    --ink-soft:#2C3947;
+    --terracotta:#C2623A;
+    --terracotta-deep:#9E4B29;
+    --stone:#6E6A61;
+    --rule:#E0D9CC;
+
+    --display:'Fraunces',Georgia,serif;
+    --body:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:var(--body);
+    font-weight:300;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+  }
+  .wrap{
+    max-width:560px;
+    text-align:center;
+  }
+  .mark{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.16em;
+    color:var(--terracotta);
+    text-transform:uppercase;
+    margin:0 0 22px;
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(34px,6vw,52px);
+    line-height:1.12;
+    letter-spacing:-.01em;
+    margin:0 0 18px;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--terracotta);
+  }
+  p{
+    font-size:17px;
+    line-height:1.6;
+    color:var(--stone);
+    margin:0 0 34px;
+    max-width:44ch;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .actions{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  a.btn{
+    display:inline-block;
+    font-family:var(--body);
+    font-weight:500;
+    font-size:15px;
+    text-decoration:none;
+    padding:13px 26px;
+    border-radius:2px;
+    transition:background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  a.btn.primary{
+    background:var(--ink);
+    color:var(--parchment);
+  }
+  a.btn.primary:hover{background:var(--terracotta-deep);}
+  a.btn.secondary{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--rule);
+  }
+  a.btn.secondary:hover{border-color:var(--terracotta);color:var(--terracotta-deep);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="mark">404</p>
+    <h1>Page <em>not found.</em></h1>
+    <p>The page you're looking for doesn't exist or may have been moved.</p>
+    <div class="actions">
+      <a class="btn primary" href="/">Back to homepage</a>
+      <a class="btn secondary" href="/#contact">Get in touch</a>
+    </div>
+  </div>
+</body>
+</html>
