@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Notice — Rovell Finance</title>
+<meta name="description" content="How Rovell Finance Limited and AFS Compliance Limited collect, use and protect your personal data.">
+<link rel="icon" type="image/png" href="/logo-mark.png">
+<link rel="apple-touch-icon" href="/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F7F3EE;
+    --parchment-deep:#EFE9E0;
+    --ink:#16202B;
+    --ink-soft:#2C3947;
+    --terracotta:#C2623A;
+    --terracotta-deep:#9E4B29;
+    --stone:#6E6A61;
+    --rule:#E0D9CC;
+    --rule-dark:#2B3846;
+
+    --display:'Fraunces',Georgia,serif;
+    --body:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+    --measure:1180px;
+    --read-measure:760px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none!important;transition:none!important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:var(--body);
+    font-weight:300;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .shell{max-width:var(--measure);margin:0 auto;padding:0 32px;}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--terracotta);outline-offset:3px;}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11.5px;
+    font-weight:500;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    margin:0 0 18px;
+  }
+
+  /* ---------- masthead (matches site) ---------- */
+  .masthead{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,243,238,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule);
+  }
+  .masthead .shell{
+    display:flex;align-items:center;justify-content:space-between;
+    height:74px;
+  }
+  .wordmark{
+    font-family:var(--display);
+    font-size:22px;font-weight:600;letter-spacing:-.02em;
+    text-decoration:none;
+  }
+  .wordmark span{color:var(--terracotta);}
+  .masthead nav{display:flex;align-items:center;gap:34px;}
+  .masthead nav a{
+    font-size:14.5px;text-decoration:none;color:var(--ink);
+    padding-bottom:2px;border-bottom:1px solid transparent;
+    transition:border-color .18s ease;
+  }
+  .masthead nav a:hover{border-bottom-color:var(--terracotta);}
+  .masthead .nav-link-set{display:flex;gap:34px;}
+  .call-link{
+    font-family:var(--mono);font-size:13.5px;font-weight:500;
+    color:var(--terracotta)!important;white-space:nowrap;
+  }
+  @media (max-width:820px){
+    .masthead .nav-link-set{display:none;}
+  }
+
+  /* ---------- page hero ---------- */
+  .p-hero{padding:76px 0 54px;border-bottom:1px solid var(--rule);}
+  .p-hero h1{
+    font-family:var(--display);
+    font-weight:300;
+    font-size:clamp(32px,4.4vw,52px);
+    line-height:1.1;
+    letter-spacing:-.026em;
+    margin:0 0 20px;
+    max-width:16ch;
+  }
+  .p-hero .lede{
+    font-size:17.5px;line-height:1.62;color:var(--stone);
+    max-width:60ch;margin:0;
+  }
+  .p-hero .meta{
+    margin-top:26px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.04em;
+    color:var(--stone);
+  }
+  .p-hero .meta a{color:var(--terracotta-deep);text-decoration:underline;text-underline-offset:2px;}
+
+  /* ---------- layout: sidebar contents + reading column ---------- */
+  .doc-wrap{padding:64px 0 100px;}
+  .doc-grid{
+    display:grid;
+    grid-template-columns:230px minmax(0,1fr);
+    gap:70px;
+    align-items:start;
+  }
+
+  .toc{
+    position:sticky;top:100px;
+    border-left:1px solid var(--rule);
+    padding-left:22px;
+  }
+  .toc-label{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--stone);margin:0 0 14px;
+  }
+  .toc ol{
+    list-style:none;margin:0;padding:0;
+    counter-reset:toc;
+  }
+  .toc li{
+    counter-increment:toc;
+    margin-bottom:11px;
+  }
+  .toc a{
+    display:flex;gap:9px;
+    font-size:13.5px;line-height:1.4;
+    text-decoration:none;color:var(--ink-soft);
+  }
+  .toc a::before{
+    content:counter(toc,decimal-leading-zero);
+    font-family:var(--mono);font-size:11px;color:var(--stone);
+    flex:0 0 auto;padding-top:1px;
+  }
+  .toc a:hover{color:var(--terracotta-deep);}
+
+  @media (max-width:900px){
+    .doc-grid{grid-template-columns:1fr;gap:0;}
+    .toc{
+      position:static;border-left:none;padding-left:0;
+      border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+      padding:24px 0;margin-bottom:44px;
+    }
+    .toc ol{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;}
+  }
+  @media (max-width:560px){
+    .toc ol{grid-template-columns:1fr;}
+  }
+
+  /* ---------- reading column ---------- */
+  .doc{max-width:var(--read-measure);}
+
+  .doc section{
+    padding:40px 0;
+    border-bottom:1px solid var(--rule);
+    scroll-margin-top:96px;
+  }
+  .doc section:first-of-type{padding-top:0;}
+  .doc section:last-of-type{border-bottom:none;padding-bottom:0;}
+
+  .doc h2{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(21px,2.4vw,27px);
+    letter-spacing:-.012em;
+    margin:0 0 16px;
+  }
+  .doc h2 .num{
+    font-family:var(--mono);font-size:13px;font-weight:500;
+    color:var(--terracotta);letter-spacing:.04em;
+    margin-right:12px;
+  }
+  .doc h3{
+    font-family:var(--body);font-weight:500;
+    font-size:15.5px;color:var(--ink);
+    margin:26px 0 10px;
+  }
+  .doc p{margin:0 0 16px;color:var(--ink-soft);}
+  .doc p:last-child{margin-bottom:0;}
+  .doc strong{color:var(--ink);font-weight:500;}
+  .doc a{color:var(--terracotta-deep);text-decoration:underline;text-underline-offset:2px;}
+  .doc a:hover{color:var(--terracotta);}
+
+  .doc ul{margin:0 0 16px;padding:0;list-style:none;}
+  .doc ul li{
+    position:relative;padding-left:20px;margin-bottom:10px;
+    color:var(--ink-soft);
+  }
+  .doc ul li:last-child{margin-bottom:0;}
+  .doc ul li::before{
+    content:'';position:absolute;left:0;top:10px;
+    width:6px;height:1px;background:var(--terracotta);
+  }
+  .doc ul li strong{color:var(--ink);}
+
+  .note{
+    background:var(--parchment-deep);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--terracotta);
+    padding:18px 22px;
+    margin:0 0 18px;
+    font-size:15.5px;
+    color:var(--ink-soft);
+  }
+  .note p{margin:0;}
+  .note p + p{margin-top:10px;}
+
+  /* schedule table */
+  .doc table{
+    width:100%;border-collapse:collapse;
+    margin:8px 0 4px;font-size:14.5px;
+  }
+  .doc caption{
+    text-align:left;font-family:var(--mono);font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--stone);
+    margin-bottom:10px;
+  }
+  .doc th{
+    text-align:left;font-family:var(--body);font-weight:500;
+    color:var(--ink);border-bottom:1px solid var(--ink);
+    padding:0 14px 10px 0;font-size:13px;
+  }
+  .doc td{
+    border-bottom:1px solid var(--rule);
+    padding:14px 14px 14px 0;
+    color:var(--ink-soft);vertical-align:top;
+  }
+  .doc tr:last-child td{border-bottom:none;}
+  @media (max-width:640px){
+    .doc table, .doc thead, .doc tbody, .doc th, .doc td, .doc tr{display:block;}
+    .doc thead{display:none;}
+    .doc tr{border-bottom:1px solid var(--rule);padding:14px 0;}
+    .doc tr:last-child{border-bottom:none;}
+    .doc td{border-bottom:none;padding:4px 0;}
+    .doc td::before{
+      content:attr(data-label);
+      display:block;font-family:var(--mono);font-size:10px;
+      letter-spacing:.1em;text-transform:uppercase;color:var(--stone);
+      margin-bottom:3px;
+    }
+  }
+
+  .contact-card{
+    margin-top:6px;
+    background:var(--ink);color:var(--parchment);
+    padding:26px 28px;
+  }
+  .contact-card p{color:#B9C2CC;margin:0 0 6px;}
+  .contact-card p:last-child{margin-bottom:0;}
+  .contact-card strong{color:var(--parchment);}
+  .contact-card a{color:#E08A5F;}
+
+  .back-top{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:44px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--stone);text-decoration:none;
+  }
+  .back-top:hover{color:var(--terracotta-deep);}
+
+  /* ---------- footer (matches site) ---------- */
+  .foot{
+    padding:56px 0 64px;
+    border-top:1px solid var(--rule);
+    background:var(--parchment-deep);
+  }
+  .foot .shell{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:48px;
+  }
+  .foot-brand{
+    font-family:var(--display);font-size:17px;color:var(--ink);
+    font-weight:500;margin:0 0 12px;
+  }
+  .foot p{
+    font-size:13px;line-height:1.7;color:var(--stone);
+    margin:0 0 12px;max-width:60ch;
+  }
+  .foot p:last-child{margin-bottom:0;}
+  .foot > .shell > div:last-child{
+    font-family:var(--mono);font-size:12.5px;color:var(--stone);
+    text-align:right;white-space:nowrap;
+  }
+  .foot > .shell > div:last-child p{margin:0 0 6px;}
+  @media (max-width:640px){
+    .foot .shell{grid-template-columns:1fr;}
+    .foot > .shell > div:last-child{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="shell">
+    <a href="/" class="wordmark">Rovell<span>.</span></a>
+    <nav>
+      <div class="nav-link-set">
+        <a href="/#what">What I arrange</a>
+        <a href="/#recent">Recent work</a>
+        <a href="/#process">How it works</a>
+      </div>
+      <a href="tel:+441257000000" class="call-link">01257 000 000</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="p-hero">
+    <div class="shell">
+      <p class="eyebrow">Legal</p>
+      <h1>Privacy Notice</h1>
+      <p class="lede">Rovell Finance Limited, trading as Rovell Finance and Sierra Finance — how we collect, use and protect your personal data.</p>
+      <p class="meta">Last updated 14 June 2018 · Historic versions available from <a href="mailto:gdpr@afsuk.com">gdpr@afsuk.com</a></p>
+    </div>
+  </section>
+
+  <section class="doc-wrap">
+    <div class="shell doc-grid">
+
+      <aside class="toc">
+        <p class="toc-label">On this page</p>
+        <ol>
+          <li><a href="#who-we-are">Who we are</a></li>
+          <li><a href="#purpose">Purpose of this document</a></li>
+          <li><a href="#changes">Changes &amp; your duty to inform us</a></li>
+          <li><a href="#data-collected">The data we collect</a></li>
+          <li><a href="#if-you-fail">If you fail to provide data</a></li>
+          <li><a href="#how-collected">How your data is collected</a></li>
+          <li><a href="#how-used">How we use your data</a></li>
+          <li><a href="#automated">Automated decision making</a></li>
+          <li><a href="#sharing">Why we share your information</a></li>
+          <li><a href="#retention">How long we keep it</a></li>
+          <li><a href="#international">International transfers</a></li>
+          <li><a href="#rights">Your rights</a></li>
+          <li><a href="#complaints">Complaints &amp; our DPO</a></li>
+          <li><a href="#schedule">Schedule 1 — Processing activities</a></li>
+        </ol>
+      </aside>
+
+      <div class="doc">
+
+        <section id="who-we-are">
+          <h2><span class="num">01</span>Who we are</h2>
+          <p><strong>AFS Compliance</strong> is the trading name of AFS Compliance Limited (company number: 05365369), a Commercial Finance Broker based in Suite 4 First Floor Challenge House, Challenge Way, Greenbank Business Park, Blackburn, England, BB1 5QB. AFS Compliance is authorised and regulated by the Financial Conduct Authority, FRN 625035.</p>
+          <p><strong>Rovell Finance Limited</strong> (company number: 16482745), trading as Sierra Finance, is a Commercial Finance Broker based at 1 Bingley Close, Clayton-le-Woods, PR6 7ST, and is an Appointed Representative of AFS Compliance Limited. We act as a broker for our customers, introducing you to a wide range of finance providers depending on your requirements and circumstances.</p>
+          <p>This privacy notice applies to you whether you engage with us via our Rovell Finance website or our Sierra Finance website — both are operated by Rovell Finance Limited. References to "Rovell Finance" and "Sierra Finance" throughout this notice mean Rovell Finance Limited; the meaning of "we", "us" and "our" is set out below.</p>
+        </section>
+
+        <section id="purpose">
+          <h2><span class="num">02</span>What is the purpose of this document?</h2>
+          <p>AFS Compliance is the controller and responsible for your personal data (collectively referred to as "AFS Compliance", "we", "us" or "our" in this privacy notice). Rovell Finance Limited, trading as Rovell Finance and Sierra Finance, is an Appointed Representative of AFS Compliance and processes your personal data on this same basis and in accordance with this privacy notice. This means that we are responsible for deciding how we hold and use personal information about you. We are required under data protection legislation to notify you of the information contained in this privacy notice.</p>
+          <p>It is important that you read this privacy notice together with any other privacy notice or fair processing notice we may provide on specific occasions when we are collecting or processing personal data about you so that you are fully aware of how and why we are using your data. This privacy notice supplements the other notices and is not intended to override them.</p>
+        </section>
+
+        <section id="changes">
+          <h2><span class="num">03</span>Changes to the privacy notice and your duty to inform us of changes</h2>
+          <p>This version was last updated on 14th June 2018 and historic versions can be obtained by contacting us at <a href="mailto:gdpr@afsuk.com">gdpr@afsuk.com</a>.</p>
+          <p>The data protection law in the UK changed on 25 May 2018. This privacy notice sets out your rights under the new laws.</p>
+          <p>It is important that the personal data we hold about you is accurate and current. Please keep us informed if your personal data changes during your relationship with us.</p>
+        </section>
+
+        <section id="data-collected">
+          <h2><span class="num">04</span>The data we collect about you</h2>
+          <p>Personal data, or personal information, means any information about an individual from which that person can be identified. It does not include data where the identity has been removed (anonymous data).</p>
+          <p>We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:</p>
+          <ul>
+            <li><strong>Identity data:</strong> includes first name, maiden name, last name, marital status, title, date of birth, gender, passport (copy), driving licence (copy) and utility bills (copy)</li>
+            <li><strong>Contact data:</strong> includes residential address, billing address, email address and telephone numbers</li>
+            <li><strong>Financial data:</strong> includes bank details, details of your income and outgoings, net worth statements</li>
+            <li><strong>Transaction data:</strong> includes details about payments to and from you and other details of products and services you have purchased from us</li>
+            <li><strong>Marketing and communications data:</strong> includes your preferences in receiving marketing from us and our third parties and your communication preferences</li>
+          </ul>
+          <h3>Special categories of data</h3>
+          <p>We may also collect, store and use the following "special categories" of more sensitive personal information:</p>
+          <ul>
+            <li>Information about your health, including medical conditions, particularly where you are classified as a vulnerable individual as a result of your medical condition.</li>
+          </ul>
+          <h3>Aggregated data</h3>
+          <p>We also collect, use and share aggregated data such as statistical or demographic data for any purpose. Aggregated data may be derived from your personal data but is not considered personal data in law as this data does not directly or indirectly reveal your identity. For example, we may aggregate your location data to calculate the percentage of customers accessing our services in a given geographical location. However, if we combine or connect aggregated data with your personal data so that it can directly or indirectly identify you, we treat the combined data as personal data which will be used in accordance with this privacy notice.</p>
+        </section>
+
+        <section id="if-you-fail">
+          <h2><span class="num">05</span>If you fail to provide personal data</h2>
+          <p>Where we need to collect personal data by law, or under the terms of a contract we have with you and you fail to provide that data when requested, we may not be able to perform the contract we have or are trying to enter into with you (for example, to provide you with services). In this case, we may have to cancel the service you have with us but we will notify you if this is the case at the time.</p>
+        </section>
+
+        <section id="how-collected">
+          <h2><span class="num">06</span>How is your personal data collected?</h2>
+          <p>We use different methods to collect data from and about you including through:</p>
+          <ul>
+            <li><strong>Direct interactions.</strong> You may give us your identity, contact and financial data by filling in forms or by corresponding with us by post, phone, email or otherwise. This includes personal data you provide when you apply for our services either directly or via our web page, or request marketing to be sent to you.</li>
+            <li><strong>Third parties or publicly available sources.</strong> We may receive personal data about you from various third parties and public sources, including contact, financial and transaction data from providers of business information such as Credit Safe, Experian or Companies House, based inside or outside the EU, and from introducers and other businesses where we have a trading relationship (which may include Rovell Finance Limited and AFS Compliance Limited, as applicable).</li>
+          </ul>
+        </section>
+
+        <section id="how-used">
+          <h2><span class="num">07</span>How we use your personal data</h2>
+          <p>We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:</p>
+          <ul>
+            <li><strong>(a) Consent:</strong> you have given clear consent for us to process your personal data for a specific purpose</li>
+            <li><strong>(b) Contract:</strong> the processing is necessary for a contract we have with you, or because you have asked us to take specific steps before entering into a contract</li>
+            <li><strong>(c) Legal obligation:</strong> the processing is necessary for us to comply with the law (not including contractual obligations)</li>
+            <li><strong>(d) Public task:</strong> the processing is necessary for us to perform a task in the public interest or for our official functions, and the task or function has a clear basis in law</li>
+            <li><strong>(e) Legitimate interests:</strong> the processing is necessary for our legitimate interests or the legitimate interests of a third party unless there is a good reason to protect your personal data which overrides those legitimate interests</li>
+          </ul>
+          <p>The situations in which we will process your personal information are listed below. Please see <a href="#schedule">Schedule 1</a> at the end of this notice, where we have set out, in table format, a description of all the ways we plan to use your personal data, and which of the legal bases we rely on to do so. We have also identified what our legitimate interests are where appropriate.</p>
+          <p>Note that we may process your personal data for more than one lawful ground depending on the specific purpose for which we are using your data. Please contact us at <a href="mailto:gdpr@afsuk.com">gdpr@afsuk.com</a> if you need details about the specific legal ground we are relying on to process your personal data where more than one ground has been set out in the table below.</p>
+          <p>We will process your personal information for the following reasons:</p>
+          <ul>
+            <li>to find the best source of finance based on your circumstances;</li>
+            <li>to undertake credit checks for the purposes of finding the most suitable finance product;</li>
+            <li>to confirm your affordability for the financial requirement we are seeking finance for;</li>
+            <li>to comply with our anti-money laundering and know your client requirements; and</li>
+            <li>to meet our regulatory responsibilities.</li>
+          </ul>
+        </section>
+
+        <section id="automated">
+          <h2><span class="num">08</span>Automated decision making</h2>
+          <p>Automated decision-making takes place when an electronic system uses personal information to make a decision without human intervention. We are allowed to use automated decision-making in the following circumstances:</p>
+          <ul>
+            <li>where we have notified you of the decision and given you 21 days to request a reconsideration;</li>
+            <li>where it is necessary to perform the contract with you and appropriate measures are in place to safeguard your rights; or</li>
+            <li>in limited circumstances, with your explicit written consent and where appropriate measures are in place to safeguard your rights.</li>
+          </ul>
+          <p>If we make an automated decision on the basis of any particularly sensitive personal information, we must have either your explicit written consent or it must be justified in the public interest, and we must also put in place appropriate measures to safeguard your rights.</p>
+          <p>Many of our funders use auto scoring technology to underwrite deals. You will not be subject to decisions that will have a significant impact on you based solely on automated decision-making, unless we have a lawful basis for doing so and we have notified you.</p>
+        </section>
+
+        <section id="sharing">
+          <h2><span class="num">09</span>Why might we share your information with third parties?</h2>
+          <p>We will share your personal information with third parties where required by law, where it is necessary to administer the contractual relationship with you or where we have another legitimate interest in doing so.</p>
+          <p>"Third parties" includes third-party service providers (including contractors and designated agents) and other entities within our group. The following third-party service providers process personal information about you for the following purposes:</p>
+          <ul>
+            <li>the most suitable funders on our panel (a full list of which is available on request)</li>
+            <li>our IT hosting and maintenance — this information is located on servers within the European Union</li>
+            <li><strong>Rovell Finance Limited and AFS Compliance Limited</strong>, to meet our respective regulatory obligations as Appointed Representative and Principal Firm</li>
+            <li>credit reference agencies, for the purposes of ascertaining your financial status</li>
+            <li>regulatory bodies such as the Financial Conduct Authority, for the purposes of meeting our regulatory obligations</li>
+            <li>other members of our group, where needed to process your application</li>
+            <li>fraud prevention agencies, where we are required to do so</li>
+            <li>third-party product providers, where you have given us your prior consent to do so</li>
+          </ul>
+          <p>We have a data protection regime in place to oversee the effective and secure processing of your personal data.</p>
+        </section>
+
+        <section id="retention">
+          <h2><span class="num">10</span>How long we keep your information</h2>
+          <p>We will only retain your personal information for as long as necessary to fulfil the purposes we collected it for, including for the purposes of satisfying any legal, accounting, or reporting requirements. Details of retention periods for different aspects of your personal information are available in our retention policy, which is available from <a href="mailto:emma.marsden@afsuk.com">emma.marsden@afsuk.com</a>. To determine the appropriate retention period for personal data, we consider the amount, nature, and sensitivity of the personal data, the potential risk of harm from unauthorised use or disclosure of your personal data, the purposes for which we process your personal data and whether we can achieve those purposes through other means, and the applicable legal requirements.</p>
+          <p>In some circumstances we may anonymise your personal information so that it can no longer be associated with you, in which case we may use such information without further notice to you. Once you are no longer an employee, worker or contractor of the company we will retain and securely destroy your personal information in accordance with applicable laws and regulations.</p>
+        </section>
+
+        <section id="international">
+          <h2><span class="num">11</span>International transfers</h2>
+          <p>We do not transfer your personal data outside the European Economic Area (EEA).</p>
+        </section>
+
+        <section id="rights">
+          <h2><span class="num">12</span>What are your rights?</h2>
+          <p>Under certain circumstances, by law you have the right to:</p>
+          <ul>
+            <li><strong>Request access</strong> to your personal information (commonly known as a "data subject access request"). This enables you to receive a copy of the personal information we hold about you and to check that we are lawfully processing it.</li>
+            <li><strong>Request correction</strong> of the personal information that we hold about you. This enables you to have any incomplete or inaccurate information we hold about you corrected.</li>
+            <li><strong>Request erasure</strong> of your personal information. This enables you to ask us to delete or remove personal information where there is no good reason for us continuing to process it. You also have the right to ask us to delete or remove your personal information where you have exercised your right to object to processing (see below).</li>
+            <li><strong>Object to processing</strong> of your personal information where we are relying on a legitimate interest (or those of a third party) and there is something about your particular situation which makes you want to object to processing on this ground. You also have the right to object where we are processing your personal information for direct marketing purposes.</li>
+            <li><strong>Request the restriction of processing</strong> of your personal information. This enables you to ask us to suspend the processing of personal information about you, for example if you want us to establish its accuracy or the reason for processing it.</li>
+            <li><strong>Request the transfer</strong> of your personal information to another party.</li>
+            <li><strong>Withdraw consent:</strong> in the limited circumstances where you may have provided your consent to the collection, processing and transfer of your personal information for a specific purpose, you have the right to withdraw your consent for that specific processing at any time. To withdraw your consent, please contact <a href="mailto:gdpr@afsuk.com">gdpr@afsuk.com</a>. Once we have received notification that you have withdrawn your consent, we will no longer process your information for the purpose or purposes you originally agreed to, unless we have another legitimate basis for doing so in law.</li>
+          </ul>
+          <p>If you want to review, verify, correct or request erasure of your personal information, object to the processing of your personal data, or request that we transfer a copy of your personal information to another party, please contact <a href="mailto:gdpr@afsuk.com">gdpr@afsuk.com</a>.</p>
+          <div class="note">
+            <p>You will not have to pay a fee to access your personal information or to exercise any of the other rights. However, we may charge a reasonable fee if your request for access is clearly unfounded or excessive, or we may refuse to comply with the request in such circumstances.</p>
+            <p>We may need to request specific information from you to help us confirm your identity and ensure your right to access the information (or to exercise any of your other rights). This is an appropriate security measure to ensure that personal information is not disclosed to any person who has no right to receive it.</p>
+          </div>
+        </section>
+
+        <section id="complaints">
+          <h2><span class="num">13</span>Complaints &amp; our Data Protection Officer</h2>
+          <p>If you wish to raise a complaint on how we have handled your personal data, you can contact our Data Protection Officer, who will investigate the matter. If you are not satisfied with our response, or believe we are processing your personal data other than in accordance with the law, you can complain to the Information Commissioner's Office (ICO).</p>
+          <div class="contact-card">
+            <p><strong>Data Protection Officer</strong> — Mrs Emma Marsden</p>
+            <p><a href="mailto:emma.marsden@afsuk.com">emma.marsden@afsuk.com</a></p>
+            <p>As Rovell Finance Limited is an Appointed Representative of AFS Compliance Limited, the same Data Protection Officer and contact details apply to personal data processed in connection with Rovell Finance Limited's services.</p>
+          </div>
+        </section>
+
+        <section id="schedule">
+          <h2><span class="num">14</span>Schedule 1 — Processing activities and lawful basis for processing</h2>
+          <table>
+            <caption>How we use your data, and the lawful basis for each use</caption>
+            <thead>
+              <tr>
+                <th>Purpose / activity</th>
+                <th>Type of data</th>
+                <th>Lawful basis for processing, including basis of legitimate interest</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Purpose">To find the best source of finance based on your circumstances</td>
+                <td data-label="Data">Identity, Contact, Financial, Transaction, Marketing &amp; Communications</td>
+                <td data-label="Basis">Contractual; Legitimate interest — to promote financial products we believe may be of interest to you</td>
+              </tr>
+              <tr>
+                <td data-label="Purpose">To undertake credit checks for the purposes of finding the most suitable finance product</td>
+                <td data-label="Data">Identity, Contact, Financial, Transaction, Marketing &amp; Communications</td>
+                <td data-label="Basis">Contractual</td>
+              </tr>
+              <tr>
+                <td data-label="Purpose">To confirm your affordability for the financial requirement you have proposed to us</td>
+                <td data-label="Data">Identity, Contact, Financial, Transaction, Marketing &amp; Communications</td>
+                <td data-label="Basis">Contractual</td>
+              </tr>
+              <tr>
+                <td data-label="Purpose">To comply with our anti-money laundering and know-your-client requirements</td>
+                <td data-label="Data">Identity, Contact, Financial, Transaction, Marketing &amp; Communications</td>
+                <td data-label="Basis">Legal obligation</td>
+              </tr>
+              <tr>
+                <td data-label="Purpose">To meet our regulatory responsibilities</td>
+                <td data-label="Data">Identity, Contact, Financial, Transaction, Marketing &amp; Communications</td>
+                <td data-label="Basis">Legal obligation</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <a href="#top" class="back-top">↑ Back to top</a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div>
+      <p class="foot-brand">Rovell Finance Limited</p>
+      <p>Rovell Finance Limited is an Appointed Representative of AFS Compliance Limited,
+        which is authorised and regulated by the Financial Conduct Authority (FRN 625035).
+        Rovell Finance Limited is registered in England and Wales, company number 16482745.</p>
+      <p>Your property may be repossessed if you do not keep up repayments on a mortgage
+        or any other debt secured on it. Some forms of buy-to-let, commercial and bridging
+        finance are not regulated by the Financial Conduct Authority.</p>
+    </div>
+    <div>
+      <p>Chorley, Lancashire</p>
+      <p>© 2026 Rovell Finance Limited</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
