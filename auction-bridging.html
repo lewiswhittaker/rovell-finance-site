@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-GB"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/logo-mark.png">
+<link rel="apple-touch-icon" href="/logo-mark.png"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Auction Bridging Finance — Rovell</title>
 <meta name="description" content="Buying a property from auction? Bridging finance arranged around the 28-day deadline, including properties a mortgage lender will not touch.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -268,7 +270,7 @@ body{background:#FBF8F3}
   <div class="step"><span class="em">📋</span><b>02</b><h3>Get your options</h3><p>I tell you honestly if it works and which lender fits. Ideally before you bid.</p></div>
   <div class="step"><span class="em">🔑</span><b>03</b><h3>Complete on time</h3><p>I chase the lender and solicitors so you hit your deadline.</p></div>
  </div>
- <p style="margin-top:34px"><a class="btn" href="#top-form" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">Check my auction purchase</a></p>
+ <p style="margin-top:34px"><a class="btn" href="#f" onclick="goForm();return false">Check my auction purchase</a></p>
 </div></section>
 
 <section class="blk cmp"><div class="shell about">
@@ -297,7 +299,7 @@ body{background:#FBF8F3}
  <h2>Bidding soon or just won? <em>Let's talk.</em></h2>
  <p>The sooner I know the lot and the completion date, the more options you have.</p>
  <a class="btn" href="tel:+441615648538">📞 Call 0161 564 8538</a><a class="btn" href="mailto:lewis@rovell.co.uk?subject=Auction%20bridging%20enquiry">✉️ Email Lewis</a>
- <a class="btn o" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">Send an enquiry</a>
+ <a class="btn o" href="#" onclick="goForm();return false">Send an enquiry</a>
 </div></section>
 
 <footer class="foot"><div class="shell">
@@ -306,8 +308,9 @@ body{background:#FBF8F3}
  <p>© 2026 Rovell Finance Limited · Chorley, Lancashire · lewis@rovell.co.uk · <a href="/rovell_privacy_policy.html">Privacy policy</a></p>
 </div></footer>
 
-<div class="bar"><a href="tel:+441615648538">📞 Call</a><a href="mailto:lewis@rovell.co.uk?subject=Auction%20bridging%20enquiry">✉️ Email</a><a class="p" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">Get options</a></div>
+<div class="bar"><a href="tel:+441615648538">📞 Call</a><a href="mailto:lewis@rovell.co.uk?subject=Auction%20bridging%20enquiry">✉️ Email</a><a class="p" href="#" onclick="goForm();return false">Get options</a></div>
 <script>
+window.goForm=function(){var f=document.getElementById('f');if(f)f.scrollIntoView({behavior:'smooth',block:'center'})};
 (function(){var ACCESS_KEY='9117b1a4-f5ee-4c4c-b7d2-4d0d3c7b0ff0';var f=document.getElementById('f'),st='';
 function show(n){['s1','s2','s3'].forEach(function(i,k){document.getElementById(i).hidden=(k+1)!==n});
 document.getElementById('pt').textContent=n<3?'Step '+n+' of 2':'Done';document.getElementById('pb').style.width=(n*50>100?100:n*50)+'%';
@@ -324,7 +327,7 @@ fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':
 .then(function(r){return r.json()}).then(function(j){if(j.success){done()}else{throw 0}})
 .catch(function(){btn.disabled=false;btn.textContent='Get my options';alert('Sorry, that did not send. Please call 0161 564 8538.')});
 });
-window.focusForm=function(){window.scrollTo({top:0,behavior:'smooth'})};
+
 })();
 </script>
 </body></html>
