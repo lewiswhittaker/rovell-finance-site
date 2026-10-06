@@ -258,7 +258,14 @@ body{background:#FBF8F3}
 .arw{display:flex;position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:34px;height:34px;border-radius:50%;border:1px solid var(--rule);background:#fff;color:var(--terra-d);font-size:22px;line-height:1;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15);padding:0 0 3px}
 .arw.l{left:0}.arw.r{right:0}
 }
-</style></head><body>
+.cc{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;max-width:520px;margin:0 auto;background:#16202B;color:#F7F3EE;border-radius:12px;padding:14px 16px;box-shadow:0 8px 30px rgba(0,0,0,.35);font-size:13.5px;line-height:1.45}
+.cc a{color:#F2B79B}.cc div{display:flex;gap:8px;margin-top:10px}.cc button{flex:1;padding:10px;border-radius:8px;border:1px solid #5F6B78;background:transparent;color:#fff;font:inherit;font-weight:700;cursor:pointer}.cc button.y{background:#C2623A;border-color:#C2623A}
+</style><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PE11QW15DK"></script>
+<script>gtag('js',new Date());gtag('config','G-PE11QW15DK');gtag('config','AW-17286976658');</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1647646510073013');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1647646510073013&ev=PageView&noscript=1" alt=""></noscript>
+</head><body>
 
 <header class="top"><div class="shell">
  <a class="logo" href="#">Rovell<span>.</span></a>
@@ -356,7 +363,7 @@ function show(n){['s1','s2','s3'].forEach(function(i,k){document.getElementById(
 document.getElementById('pt').textContent=n<3?'Step '+n+' of 2':'Done';document.getElementById('pb').style.width=(n*50>100?100:n*50)+'%';
 document.getElementById('fn').hidden=n===3;if(n===2)document.getElementById('n').focus()}
 f.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){st=b.dataset.v;show(2)})});
-document.getElementById('bk').addEventListener('click',function(){show(1)});
+var bk=document.getElementById('bk');if(bk)bk.addEventListener('click',function(){show(1)});
 f.addEventListener('submit',function(e){e.preventDefault();var n=f.n.value.trim(),p=f.p.value.trim(),em=f.e.value.trim();
 if(!n||p.replace(/\D/g,'').length<10||!/^\S+@\S+\.\S+$/.test(em)){f.p.style.borderColor='#9E3B2C';f.e.style.borderColor='#9E3B2C';return}
 var btn=f.querySelector('.go');btn.disabled=true;btn.textContent='Sending...';
@@ -371,4 +378,5 @@ fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':
 })();
 </script>
 <script>document.querySelectorAll('.car').forEach(function(c){var t=c.querySelector('.swipe');c.querySelectorAll('.arw').forEach(function(b){b.onclick=function(){var w=t.querySelector('.case,.rev').offsetWidth+12;t.scrollBy({left:b.classList.contains('r')?w:-w,behavior:'smooth'})}})});</script>
+<script>(function(){var s3=document.getElementById('s3');if(s3&&window.MutationObserver){var fired=false;new MutationObserver(function(){if(!s3.hidden&&!fired){fired=true;gtag('event','generate_lead');if(window.fbq)fbq('track','Lead')}}).observe(s3,{attributes:true,attributeFilter:['hidden']})}})();</script>
 </body></html>
