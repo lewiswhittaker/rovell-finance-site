@@ -336,6 +336,71 @@ footer .legal a:hover { color: var(--paper); }
 .cs .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .member .ph { position: relative; overflow: hidden; }
 .member .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ---------- Menu button (mobile) ---------- */
+.menu-btn { display: none; width: 40px; height: 40px; border: 0; background: transparent; padding: 0; cursor: pointer; justify-self: end; position: relative; }
+.menu-btn span { position: absolute; left: 9px; right: 9px; height: 1.5px; background: currentColor; transition: transform .25s, top .25s; }
+.menu-btn span:first-child { top: 15px; } .menu-btn span:last-child { top: 23px; }
+body.menu-open .menu-btn span:first-child { top: 19px; transform: rotate(45deg); }
+body.menu-open .menu-btn span:last-child { top: 19px; transform: rotate(-45deg); }
+.mnav { display: none; }
+.bar { color: var(--ink); }
+
+@media (max-width: 760px) {
+  :root { --frame-w: 8px; }
+  .bar .wrap { grid-template-columns: 1fr auto; height: 60px; }
+  .talk { display: none; }
+  .menu-btn { display: block; color: inherit; }
+  body.menu-open .bar { background: var(--frame); color: var(--paper); }
+  body.menu-open .bar .brand .tile { background: var(--paper); color: var(--frame); }
+  .mnav { display: flex; flex-direction: column; gap: 4px; position: fixed; inset: calc(var(--frame-w) + 60px) var(--frame-w) var(--frame-w); z-index: 45;
+    background: var(--frame); padding: 32px 24px; opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
+  body.menu-open .mnav { opacity: 1; visibility: visible; }
+  .mnav a { color: var(--paper); font-family: var(--display); font-size: 34px; line-height: 1.25; padding: 10px 0; border-bottom: 1px solid rgba(251,247,240,.14); }
+  body.menu-open { overflow: hidden; }
+
+  /* sections flow naturally on phones */
+  .scr { min-height: 0; padding: calc(var(--frame-w) + 96px) 0 64px; justify-content: flex-start; }
+  .wrap { padding: 0 22px; }
+
+  /* hero */
+  .hero.scr { min-height: 100svh; padding-bottom: 32px; justify-content: center; }
+  .hero-split { text-align: left; gap: 36px; }
+  .hero-split h1 { font-size: 40px; line-height: 1.05; margin: 0 0 28px; max-width: none; }
+  .hero-split .btns { justify-content: flex-start; flex-wrap: nowrap; gap: 10px; }
+  .hero .pill { padding: 13px 18px; font-size: 14px; }
+  .hero-fig { max-width: none; margin: 0 -6px; }
+
+  /* headings left-aligned for a consistent reading line */
+  .head { text-align: left; margin-bottom: 32px; }
+  .head h2, .head h2.one { margin: 0; max-width: none; white-space: normal; font-size: 32px; line-height: 1.08; }
+  .head p, .head p.wide { margin: 16px 0 0; font-size: 16px; }
+  .about h2 { font-size: 34px; }
+  .about .lede { font-size: 16px; }
+  .principles h3 { font-size: 24px; }
+
+  /* product cards: compact */
+  .cards { gap: 10px; }
+  .card { aspect-ratio: auto; min-height: 0; padding: 22px; gap: 28px; }
+  .card h3 { min-height: 0; font-size: 26px; margin-bottom: 8px; }
+  .card p { min-height: 0; }
+
+  /* case studies: horizontal swipe */
+  .cs-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 82%; grid-template-columns: none; max-width: none; gap: 12px;
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 22px; margin: 0 -22px; padding: 0 22px 8px; scrollbar-width: none; }
+  .cs-grid::-webkit-scrollbar { display: none; }
+  .cs { scroll-snap-align: start; border-width: 7px; }
+  .cs .ph { border-bottom-width: 7px; }
+  .cs:hover, .card:hover { transform: none; }
+
+  /* team */
+  .team-grid { grid-template-columns: minmax(0, 300px); justify-content: start; }
+
+  /* contact */
+  footer .big { font-size: 44px; }
+  footer .cols { gap: 28px; }
+  footer .legal { columns: 1; font-size: 11px; }
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 </style>
 </head>
@@ -354,8 +419,17 @@ footer .legal a:hover { color: var(--paper); }
       <a href="#team">Team</a>
     </nav>
     <a class="talk" href="#contact">Speak to us <span aria-hidden="true">→</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><span></span><span></span></button>
   </div>
 </div>
+
+<nav class="mnav" id="mnav" aria-label="Mobile">
+  <a href="#about">About</a>
+  <a href="#arrange">What we arrange</a>
+  <a href="#case-studies">Case Studies</a>
+  <a href="#team">Team</a>
+  <a href="#contact">Contact</a>
+</nav>
 
 <main id="top">
 
@@ -496,9 +570,14 @@ footer .legal a:hover { color: var(--paper); }
 <script>
 (function () {
   var bar = document.querySelector('.bar'), foot = document.getElementById('contact');
-  if (!bar || !foot || !('IntersectionObserver' in window)) return;
-  new IntersectionObserver(function (e) { bar.classList.toggle('dark', e[0].isIntersecting); },
-    { rootMargin: '-45% 0px -45% 0px' }).observe(foot);
+  function check() { if (bar && foot) bar.classList.toggle('dark', foot.getBoundingClientRect().top <= bar.offsetHeight + 10); }
+  window.addEventListener('scroll', check, { passive: true }); window.addEventListener('resize', check); check();
+  var btn = document.querySelector('.menu-btn'), nav = document.getElementById('mnav');
+  if (!btn || !nav) return;
+  function setOpen(o) { document.body.classList.toggle('menu-open', o); btn.setAttribute('aria-expanded', o ? 'true' : 'false'); btn.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); }
+  btn.addEventListener('click', function () { setOpen(!document.body.classList.contains('menu-open')); });
+  nav.addEventListener('click', function (e) { if (e.target.tagName === 'A') setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
 })();
 </script>
 </body>
