@@ -401,6 +401,46 @@ body.menu-open .menu-btn span:last-child { top: 19px; transform: rotate(-45deg);
   footer .cols { gap: 28px; }
   footer .legal { columns: 1; font-size: 11px; }
 }
+
+.car-ctl { display: none; }
+@media (max-width: 760px) {
+  html { scroll-snap-type: y mandatory; }
+  .scr { min-height: 100svh; scroll-snap-align: start; scroll-snap-stop: normal; justify-content: center; padding: calc(var(--frame-w) + 76px) 0 28px; }
+  .hero.scr { padding-bottom: 24px; }
+  .hero-split { gap: 22px; }
+  .hero-split h1 { font-size: 36px; margin-bottom: 22px; }
+  .hero-fig { margin: 0 auto; width: 100%; }
+  .elev { max-height: 38svh; width: auto; max-width: 100%; margin: 0 auto; }
+
+  /* About: tighter so it fits one screen */
+  .about { gap: 22px; }
+  .about h2 { font-size: 30px; margin-bottom: 14px; }
+  .about .lede { font-size: 14.5px; line-height: 1.5; }
+  .about .k2 { margin-bottom: 12px; }
+  .principles li { padding: 12px 0; grid-template-columns: 30px minmax(0,1fr); }
+  .principles .n { padding-top: 6px; }
+  .principles h3 { font-size: 20px; margin-bottom: 4px; }
+  .principles p { font-size: 13.5px; line-height: 1.45; }
+
+  /* Carousels: product cards + completions */
+  .cards.car, .cs-grid.car { display: grid; grid-auto-flow: column; grid-auto-columns: 84%; grid-template-columns: none; gap: 12px;
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 22px; margin: 0 -22px; padding: 0 22px 4px; scrollbar-width: none; max-width: none; }
+  .cards.car::-webkit-scrollbar { display: none; }
+  .cards.car .card { scroll-snap-align: start; min-height: 300px; justify-content: space-between; }
+  .head { margin-bottom: 24px; }
+  .head h2, .head h2.one { font-size: 30px; }
+  .head p.wide { font-size: 15px; }
+  .car-ctl { display: flex; gap: 10px; margin-top: 18px; }
+  .car-btn { width: 46px; height: 46px; border-radius: 999px; border: 1px solid var(--ink); background: transparent; color: var(--ink); font-size: 18px; line-height: 1; cursor: pointer; display: grid; place-items: center; }
+  .car-btn:active { background: var(--ink); color: var(--paper); }
+
+  /* Team fits one screen */
+  .team-grid { grid-template-columns: minmax(0, 260px); }
+  .member .ph { max-height: 46svh; }
+
+  /* Footer */
+  footer.scr { justify-content: flex-start; }
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 </style>
 </head>
@@ -475,11 +515,15 @@ body.menu-open .menu-btn span:last-child { top: 19px; transform: rotate(-45deg);
         <h2 class="one">Funding for all types of property projects</h2>
         <p class="wide">We connect property developers, investors and commercial property owners with lenders from our established relationships across banks and specialist lenders.</p>
       </div>
-      <div class="cards">
+      <div class="cards car">
         <article class="card c1"><span class="k">01</span><div><h3>Development Finance</h3><p>Ground-up builds and conversions, structured around your programme and drawdowns.</p></div></article>
         <article class="card c2"><span class="k">02</span><div><h3>Bridging</h3><p>Short-term funding for auctions, refurbishments and time-critical completions.</p></div></article>
         <article class="card c3"><span class="k">03</span><div><h3>BTL Mortgages</h3><p>Long-term lending for rental property, from a first let to a company portfolio.</p></div></article>
         <article class="card c4"><span class="k">04</span><div><h3>Commercial Mortgages</h3><p>Finance for investment and owner-occupied commercial property.</p></div></article>
+      </div>
+      <div class="car-ctl" aria-hidden="false">
+        <button class="car-btn" type="button" data-dir="-1" aria-label="Previous">&#8592;</button>
+        <button class="car-btn" type="button" data-dir="1" aria-label="Next">&#8594;</button>
       </div>
     </div>
   </section>
@@ -489,7 +533,7 @@ body.menu-open .menu-btn span:last-child { top: 19px; transform: rotate(-45deg);
       <div class="head">
         <h2 class="one">A few of our recent completions</h2>
       </div>
-      <div class="cs-grid">
+      <div class="cs-grid car">
         <article class="cs">
           <div class="ph"><img src="case1.jpg" alt="Planning Bridge" loading="lazy" onerror="this.remove()"></div>
           <div class="cs-body">
@@ -520,6 +564,10 @@ body.menu-open .menu-btn span:last-child { top: 19px; transform: rotate(-45deg);
             </dl>
           </div>
         </article>
+      </div>
+      <div class="car-ctl" aria-hidden="false">
+        <button class="car-btn" type="button" data-dir="-1" aria-label="Previous">&#8592;</button>
+        <button class="car-btn" type="button" data-dir="1" aria-label="Next">&#8594;</button>
       </div>
     </div>
   </section>
@@ -572,6 +620,14 @@ body.menu-open .menu-btn span:last-child { top: 19px; transform: rotate(-45deg);
   var bar = document.querySelector('.bar'), foot = document.getElementById('contact');
   function check() { if (bar && foot) bar.classList.toggle('dark', foot.getBoundingClientRect().top <= bar.offsetHeight + 10); }
   window.addEventListener('scroll', check, { passive: true }); window.addEventListener('resize', check); check();
+  document.querySelectorAll('.car-ctl').forEach(function (ctl) {
+    var track = ctl.previousElementSibling;
+    ctl.addEventListener('click', function (e) {
+      var b = e.target.closest('.car-btn'); if (!b || !track) return;
+      var item = track.firstElementChild, step = item ? item.getBoundingClientRect().width + 12 : track.clientWidth;
+      track.scrollBy({ left: step * Number(b.dataset.dir), behavior: 'smooth' });
+    });
+  });
   var btn = document.querySelector('.menu-btn'), nav = document.getElementById('mnav');
   if (!btn || !nav) return;
   function setOpen(o) { document.body.classList.toggle('menu-open', o); btn.setAttribute('aria-expanded', o ? 'true' : 'false'); btn.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); }
