@@ -441,6 +441,8 @@ body.menu-open .menu-btn span:last-child { top: 19px; transform: rotate(-45deg);
   /* Footer */
   footer.scr { justify-content: flex-start; }
 }
+@media (min-width: 1041px) { .cs-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; } .cs { border-width: 8px; } .cs .ph { border-bottom-width: 8px; } .cs-body { padding: 18px 18px 20px; } .cs-body h3 { font-size: 22px; } }
+@media (min-width: 1041px) { .cs-body dl { grid-template-columns: minmax(0,1fr) auto; } .cs-body dt { white-space: nowrap; } .cs-body dd { font-size: 14.5px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 </style>
 </head>
@@ -561,6 +563,16 @@ body.menu-open .menu-btn span:last-child { top: 19px; transform: rotate(-45deg);
             <dl>
               <div><dt>Product</dt><dd>Development finance</dd></div>
               <div><dt>Loan size</dt><dd>£947,000</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="cs">
+          <div class="ph"><img src="case4.jpg" alt="Commercial Conversion" loading="lazy" onerror="this.remove()"></div>
+          <div class="cs-body">
+            <h3>Commercial Conversion</h3>
+            <dl>
+              <div><dt>Product</dt><dd>Bridging</dd></div>
+              <div><dt>Loan size</dt><dd>£535,000</dd></div>
             </dl>
           </div>
         </article>
